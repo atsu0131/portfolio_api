@@ -82,7 +82,7 @@ export default {
             var node = document.createElement("div");
             node.setAttribute("class", "column");
             var txt =
-              `<div class="callout"><a href="">` +
+              `<div class="callout"><a href="${res.rest[i].url}">` +
               `<p>${res.rest[i].name}</p>` +
               `<img src="${res.rest[i].image_url.shop_image1}" alt="">` +
               `</a></div>`;
