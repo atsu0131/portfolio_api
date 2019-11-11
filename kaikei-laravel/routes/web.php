@@ -19,3 +19,5 @@
 Route::get('/', function () {                                                                                                                                   
   return view('accounting.index');                                                                                                                                          
 });  
+
+Route::get('/folders/{id}/tasks', 'TaskController@index')->name('tasks.index');

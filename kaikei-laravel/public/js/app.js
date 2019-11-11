@@ -2007,7 +2007,7 @@ __webpack_require__.r(__webpack_exports__);
             // this.addCardItem(res.rest[i]);
             var node = document.createElement("div");
             node.setAttribute("class", "column");
-            var txt = "<div class=\"callout\"><a href=\"\">" + "<p>".concat(res.rest[i].name, "</p>") + "<img src=\"".concat(res.rest[i].image_url.shop_image1, "\" alt=\"\">") + "</a></div>";
+            var txt = "<div class=\"callout\"><a href=\"".concat(res.rest[i].url, "\">") + "<p>".concat(res.rest[i].name, "</p>") + "<img src=\"".concat(res.rest[i].image_url.shop_image1, "\" alt=\"\">") + "</a></div>";
             node.innerHTML = txt;
             mainBlock.appendChild(node);
           }
