@@ -28,7 +28,8 @@ return [
     */
 
     'env' => env('APP_ENV', 'production'),
-
+    'api_key_weather' => env('WEATHER_APP_KEY', 'production'),
+    'api_key_dinner' => env('DINNER_APP_KEY', 'production'),
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode

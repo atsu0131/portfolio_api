@@ -62,9 +62,6 @@ export default {
       const data = await axios.get('/api/dinner').catch(err => console.log(err))
       console.log(data)
 
-      const API_KEY = "a1a61566eb6f815635ac192f64173739"; // apikeyを入力 注意：gitにapikeyを上げない
-      // const API_KEY = "/api/dinner";
-
       const mainBlock = document.getElementById("main-block");
       // 全ての子要素を削除する
       while (mainBlock.firstChild) mainBlock.removeChild(mainBlock.firstChild);
@@ -73,7 +70,7 @@ export default {
       let searchData = document.getElementById("search-id").value;
 
       // URLの生成 本来はサーバー側で処理すべき(apikeyがユーザーに見えてしまうので)
-      let _url = `https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=${API_KEY}&freeword=${searchData}`;
+      let _url = `${data}.${searchData}`;
       // Ajax(XMLHttpRequest)処理
       // APIを実行して結果のJSONデータを加工している
       let xhttp = new XMLHttpRequest();
