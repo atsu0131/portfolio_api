@@ -53,8 +53,12 @@ export default {
             error: null,
         };
     },
-    created() {
+    async created() {
         // this.fetchData();
+
+        // Laravel側からデータを取得
+        const data = await axios.get('/api/weather').catch(err => console.log(err))
+        console.log(data)
     },
     methods: {
       loadUrl: function () {

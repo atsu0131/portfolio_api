@@ -6,8 +6,13 @@ use Illuminate\Http\Request;
 
 class AccountingsController extends Controller
 {
-  public function index()
+    public function index()
     {
       return view('accounting.index');
+    }
+
+    public function getWeatherFromApi()
+    {
+        return ['sample'];
     }
 }
