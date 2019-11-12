@@ -15,4 +15,9 @@ class AccountingsController extends Controller
     {
         return ['sample'];
     }
+
+    public function getdinnerFromApi()
+    {
+        return ['sample2'];
+    }
 }

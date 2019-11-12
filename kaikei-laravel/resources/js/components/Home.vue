@@ -55,14 +55,16 @@ export default {
     },
     async created() {
         // this.fetchData();
-
-        // Laravel側からデータを取得
-        const data = await axios.get('/api/weather').catch(err => console.log(err))
-        console.log(data)
     },
     methods: {
       loadUrl: function () {
+              // Laravel側からデータを取得
+      const data = await axios.get('/api/dinner').catch(err => console.log(err))
+      console.log(data)
+
       const API_KEY = "a1a61566eb6f815635ac192f64173739"; // apikeyを入力 注意：gitにapikeyを上げない
+      // const API_KEY = "/api/dinner";
+
       const mainBlock = document.getElementById("main-block");
       // 全ての子要素を削除する
       while (mainBlock.firstChild) mainBlock.removeChild(mainBlock.firstChild);

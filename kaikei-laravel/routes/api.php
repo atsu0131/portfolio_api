@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 */
 
 Route::get("/weather", "AccountingsController@getWeatherFromApi")->name('top');
+Route::get("/dinner", "AccountingsController@getDinnerFromApi")->name('dinner');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

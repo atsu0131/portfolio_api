@@ -25,7 +25,8 @@
       }
     },
     mounted: function(){
-      axios.get('https://api.openweathermap.org/data/2.5/weather?q=Tokyo,jp&units=metric&appid=a2ecb9b147c8f4770d9488c0eb63d070')
+        // Laravel側からデータを取得
+      axios.get('/api/weather')
       .then(function(response){
         this.city = response.data.name
         this.temp = response.data.main.temp
