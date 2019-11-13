@@ -59,7 +59,7 @@ export default {
     methods: {
       loadUrl: function () {
               // Laravel側からデータを取得
-      const data = await axios.get('/api/dinner').catch(err => console.log(err))
+      const data = axios.get('/api/dinner').catch(err => console.log(err))
       console.log(data)
 
       const mainBlock = document.getElementById("main-block");
