@@ -84,13 +84,9 @@ export default {
       // // 検索ワードを取得する
       // let searchData = document.getElementById("search-id").value;
 
-      // URLの生成 本来はサーバー側で処理すべき(apikeyがユーザーに見えてしまうので)
       let getData = this.data;
-      // Ajax(XMLHttpRequest)処理
-      // APIを実行して結果のJSONデータを加工している
 
         for (let i = 0; i < getData.length; i++) {
-          // this.addCardItem(res.rest[i]);
           var node = document.createElement("div");
           node.setAttribute("class", "column");
           var txt =
