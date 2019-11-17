@@ -27,7 +27,7 @@ class AccountingsController extends Controller
     public function getDinnerFromApi()
     {
         $env = env('DINNER_APP_KEY');
-        $url = "https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=".$env."&freeword=";
+        $url = "https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=".$env."&freeword=焼肉";
         $api = $url;
 
         $guzzleClient = new Client();
