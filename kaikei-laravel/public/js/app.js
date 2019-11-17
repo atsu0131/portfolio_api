@@ -2006,14 +2006,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         mainBlock.removeChild(mainBlock.firstChild);
       } // // 検索ワードを取得する
       // let searchData = document.getElementById("search-id").value;
-      // URLの生成 本来はサーバー側で処理すべき(apikeyがユーザーに見えてしまうので)
 
 
-      var getData = this.data; // Ajax(XMLHttpRequest)処理
-      // APIを実行して結果のJSONデータを加工している
+      var getData = this.data;
 
       for (var i = 0; i < getData.length; i++) {
-        // this.addCardItem(res.rest[i]);
         var node = document.createElement("div");
         node.setAttribute("class", "column");
         var txt = "<div class=\"callout\"><a href=\"".concat(getData[i].url, "\">") + "<p>".concat(getData[i].name, "</p>") + "<img src=\"".concat(getData[i].image_url.shop_image1, "\" alt=\"\">") + "</a></div>";
