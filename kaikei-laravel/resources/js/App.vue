@@ -18,8 +18,8 @@
   import axios from 'axios';
   export default {
     data: {
-      city: null, 
-      temp: null, 
+      city: null,
+      temp: null,
       condition: {
         main: null
       }

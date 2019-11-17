@@ -27,8 +27,9 @@
   </div>
   <br>
 
+<vue-loading v-show="loading" type="spin" color="#333" :size="{ width: '50px', height: '50px' }"></vue-loading>
   <!-- 検索フォーム -->
-  <div class="row">
+  <div class="row" v-show="!loading" >
     <div class="small-2 large-2 columns">検索ワード</div>
     <div class="small-4 large-4 columns">
       <input id="search-id" class="" type="text" placeholder="検索ワードを入力してください" />
@@ -44,60 +45,63 @@
 </div>
 </template>
 <script>
+import { VueLoading } from 'vue-loading-template'
 import axios from 'axios';
 export default {
+  components: {
+    VueLoading
+  },
     data() {
         return {
             loading: false,
             users: null,
             error: null,
+            data: null,
+            loading: true
         };
     },
-    async created() {
-        // this.fetchData();
+    created: function(){
+      axios.get('/api/dinner')
+        .then(function(response){
+          this.data = response.data.rest;
+          this.loading = false;
+        }.bind(this))
+        .catch(function(error){
+          console.log(error)
+      })
+    console.log(this.data);
     },
     methods: {
       loadUrl: function () {
-              // Laravel側からデータを取得
-      const data = axios.get('/api/dinner').catch(err => console.log(err))
-      console.log(data)
+
+      // const data = axios.get('/api/dinner').catch(err => console.log(err))
+      console.log(this.data);
 
       const mainBlock = document.getElementById("main-block");
       // 全ての子要素を削除する
       while (mainBlock.firstChild) mainBlock.removeChild(mainBlock.firstChild);
 
-      // 検索ワードを取得する
-      let searchData = document.getElementById("search-id").value;
+      // // 検索ワードを取得する
+      // let searchData = document.getElementById("search-id").value;
 
       // URLの生成 本来はサーバー側で処理すべき(apikeyがユーザーに見えてしまうので)
-      let _url = `${data}.${searchData}`;
+      let getData = this.data;
       // Ajax(XMLHttpRequest)処理
       // APIを実行して結果のJSONデータを加工している
-      let xhttp = new XMLHttpRequest();
-      // 通信が終わった時の処理　通信の状態が変わった時
-      // 検索結果出るまで他のことができる
-      // コールバック
-      xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          let res = JSON.parse(xhttp.responseText);
-          for (let i = 0; i < res.rest.length; i++) {
-            // this.addCardItem(res.rest[i]);
-            var node = document.createElement("div");
-            node.setAttribute("class", "column");
-            var txt =
-              `<div class="callout"><a href="${res.rest[i].url}">` +
-              `<p>${res.rest[i].name}</p>` +
-              `<img src="${res.rest[i].image_url.shop_image1}" alt="">` +
-              `</a></div>`;
 
-            node.innerHTML = txt;
-            mainBlock.appendChild(node);
-          }
+        for (let i = 0; i < getData.length; i++) {
+          // this.addCardItem(res.rest[i]);
+          var node = document.createElement("div");
+          node.setAttribute("class", "column");
+          var txt =
+            `<div class="callout"><a href="${getData[i].url}">` +
+            `<p>${getData[i].name}</p>` +
+              `<img src="${getData[i].image_url.shop_image1}" alt="">` +
+            `</a></div>`;
+
+          node.innerHTML = txt;
+          mainBlock.appendChild(node);
         }
-      };
-      // データ取得開始
-      xhttp.open("GET", _url, true);
-      xhttp.send();
       },
       addCardItem: function(item) {
         var node = document.createElement("div");
