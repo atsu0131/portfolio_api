@@ -24,10 +24,12 @@ class AccountingsController extends Controller
         return $data;
     }
 
-    public function getDinnerFromApi()
+    public function getDinnerFromApi(Request $request)
     {
+        $searchParam = $request->query('param');
+
         $env = config('app.api_key_dinner');
-        $url = "https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=".$env."&freeword=焼肉";
+        $url = "https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=".$env."&freeword=".$searchParam;
         $api = $url;
 
         $guzzleClient = new Client();
